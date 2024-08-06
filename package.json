@@ -1,0 +1,30 @@
+{
+    "name": "react-datatable-custom-mjv2",
+    "version": "1.0.4",
+    "description": "React datatable which works on search, pageNumber, pageSize, orderBy, sortBy",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "babel src --out-dir dist && copyfiles -u 1 src/assets/*.css dist"
+    },
+    "author": "Mohsin Javed",
+    "license": "ISC",
+    "dependencies": {
+        "@babel/cli": "^7.24.8",
+        "@babel/core": "^7.24.8",
+        "@babel/preset-env": "^7.24.8",
+        "@babel/preset-react": "^7.24.7",
+        "@iconify/react": "^5.0.2",
+        "file-saver": "^2.0.5",
+        "lodash": "^4.17.21",
+        "prop-types": "^15.8.1",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1"
+    },
+    "files": [
+        "dist/**/*",
+        "src/assets/*.css"
+    ],
+    "devDependencies": {
+        "copyfiles": "^2.4.1"
+    }
+}
