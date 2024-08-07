@@ -10,7 +10,7 @@ const Popup = ({showPopup, popupContent, popupTitle, setShowPopup}) => {
                  }} className={'absolute right-4 top-4 cursor-pointer hover:text-[#d61106]'}><Icon fontSize={"30px"} icon={'mdi:close-thick'} /></span>
                 <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm mx-auto w-full">
                     <h2 className="text-lg uppercase font-bold mb-4">{popupTitle}</h2>
-                    <p className="mb-4">{popupContent}</p>
+                    <p className="mb-4 max-h-[500px] overflow-auto">{popupContent}</p>
                 </div>
             </div>
         </>
