@@ -88,8 +88,9 @@ const DataTable = ({
     if (columnsVisibility) {
       if (localData) {
         if (localData.length !== visibleColumns.length) {
-          localStorage.setItem(key, visibleColumns);
-          setVisibleColumns(columns.map(() => true));
+          const visibleColumnsData = columns.map(() => true);
+          localStorage.setItem(key, visibleColumnsData);
+          setVisibleColumns(visibleColumnsData);
         }
       } else {
         localStorage.setItem(key, visibleColumns);

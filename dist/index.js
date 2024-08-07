@@ -33,7 +33,7 @@ var DataTable = function DataTable(_ref) {
     _ref$checkbox = _ref.checkbox,
     checkbox = _ref$checkbox === void 0 ? false : _ref$checkbox,
     _ref$checkboxValueSel = _ref.checkboxValueSelector,
-    checkboxValueSelector = _ref$checkboxValueSel === void 0 ? 'id' : _ref$checkboxValueSel,
+    checkboxValueSelector = _ref$checkboxValueSel === void 0 ? "id" : _ref$checkboxValueSel,
     selectedCheckboxes = _ref.selectedCheckboxes,
     columns = _ref.columns,
     _ref$data = _ref.data,
@@ -68,12 +68,12 @@ var DataTable = function DataTable(_ref) {
     _ref$totalPages = _ref.totalPages,
     totalPages = _ref$totalPages === void 0 ? 0 : _ref$totalPages,
     _ref$orderBy = _ref.orderBy,
-    orderBy = _ref$orderBy === void 0 ? 'updated_at' : _ref$orderBy,
+    orderBy = _ref$orderBy === void 0 ? "updated_at" : _ref$orderBy,
     _ref$sortBy = _ref.sortBy,
-    sortBy = _ref$sortBy === void 0 ? 'DESC' : _ref$sortBy,
+    sortBy = _ref$sortBy === void 0 ? "DESC" : _ref$sortBy,
     setSearch = _ref.setSearch,
     _ref$searchPlaceholde = _ref.searchPlaceholder,
-    searchPlaceholder = _ref$searchPlaceholde === void 0 ? 'Search...' : _ref$searchPlaceholde,
+    searchPlaceholder = _ref$searchPlaceholde === void 0 ? "Search..." : _ref$searchPlaceholde,
     setPageSize = _ref.setPageSize,
     setPageNumber = _ref.setPageNumber,
     setOrderBy = _ref.setOrderBy,
@@ -83,11 +83,11 @@ var DataTable = function DataTable(_ref) {
     _useState2 = _slicedToArray(_useState, 2),
     showPopup = _useState2[0],
     setShowPopup = _useState2[1];
-  var _useState3 = (0, _react.useState)(''),
+  var _useState3 = (0, _react.useState)(""),
     _useState4 = _slicedToArray(_useState3, 2),
     popupTitle = _useState4[0],
     setPopupTitle = _useState4[1];
-  var _useState5 = (0, _react.useState)(''),
+  var _useState5 = (0, _react.useState)(""),
     _useState6 = _slicedToArray(_useState5, 2),
     popupContent = _useState6[0],
     setPopupContent = _useState6[1];
@@ -105,10 +105,10 @@ var DataTable = function DataTable(_ref) {
     setInputValue = _useState12[1];
 
   // Column visibility state
-  var table_title = title.toString().toLowerCase().replaceAll(' ', '_');
+  var table_title = title.toString().toLowerCase().replaceAll(" ", "_");
   var key = "".concat(table_title, "_column_visibility");
-  var localData = localStorage.getItem(key) ? localStorage.getItem(key).split(',').map(function (el) {
-    return el === 'true';
+  var localData = localStorage.getItem(key) ? localStorage.getItem(key).split(",").map(function (el) {
+    return el === "true";
   }) : null;
   var _useState13 = (0, _react.useState)(false),
     _useState14 = _slicedToArray(_useState13, 2),
@@ -130,9 +130,9 @@ var DataTable = function DataTable(_ref) {
   // Adjust the debounce delay as needed
   [setSearch]);
   (0, _react.useEffect)(function () {
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return function () {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
   (0, _react.useEffect)(function () {
@@ -140,6 +140,9 @@ var DataTable = function DataTable(_ref) {
       if (localData) {
         if (localData.length !== visibleColumns.length) {
           localStorage.setItem(key, visibleColumns);
+          setVisibleColumns(columns.map(function () {
+            return true;
+          }));
         }
       } else {
         localStorage.setItem(key, visibleColumns);
@@ -166,7 +169,7 @@ var DataTable = function DataTable(_ref) {
       var cb = data.map(function (item, index) {
         return {
           index: index,
-          value: checkboxValueSelector.split('.').reduce(function (acc, key) {
+          value: checkboxValueSelector.split(".").reduce(function (acc, key) {
             return acc[key];
           }, item),
           checked: false
@@ -185,7 +188,7 @@ var DataTable = function DataTable(_ref) {
   }, [checkboxes]);
   var handleSortChange = function handleSortChange(order_by) {
     setOrderBy(order_by);
-    setSortBy(sortBy === 'ASC' ? 'DESC' : 'ASC');
+    setSortBy(sortBy === "ASC" ? "DESC" : "ASC");
   };
   var handleCheckBox = function handleCheckBox(index, checked) {
     setCheckboxes(function (prevState) {
@@ -235,14 +238,14 @@ var DataTable = function DataTable(_ref) {
       className: "w-[fit-content]"
     }, /*#__PURE__*/_react["default"].createElement("p", null, /*#__PURE__*/_react["default"].createElement("span", {
       className: "font-semibold"
-    }, offset), " - ", /*#__PURE__*/_react["default"].createElement("span", {
+    }, offset), " -", " ", /*#__PURE__*/_react["default"].createElement("span", {
       className: "font-semibold"
-    }, limit), " of ", /*#__PURE__*/_react["default"].createElement("span", {
+    }, limit), " of", " ", /*#__PURE__*/_react["default"].createElement("span", {
       className: "font-semibold"
     }, totalData)));
   };
   var PaginationButtons = function PaginationButtons() {
-    var className = 'flex items-center justify-center rounded-full bg-gray-100 w-8 h-8 enabled:hover:bg-gray-200 disabled:opacity-[0.5]';
+    var className = "flex items-center justify-center rounded-full bg-gray-100 w-8 h-8 enabled:hover:bg-gray-200 disabled:opacity-[0.5]";
     var nextPage = pageNumber + 1;
     var previousPage = pageNumber - 1;
     var firstPage = 1;
@@ -257,7 +260,7 @@ var DataTable = function DataTable(_ref) {
         return setPageNumber(firstPage);
       }
     }, /*#__PURE__*/_react["default"].createElement(_react2.Icon, {
-      icon: 'material-symbols:first-page-rounded'
+      icon: "material-symbols:first-page-rounded"
     })), /*#__PURE__*/_react["default"].createElement("button", {
       disabled: previousPage < 1,
       title: "Go to previous page",
@@ -266,7 +269,7 @@ var DataTable = function DataTable(_ref) {
         return setPageNumber(previousPage);
       }
     }, /*#__PURE__*/_react["default"].createElement(_react2.Icon, {
-      icon: 'material-symbols:keyboard-arrow-left'
+      icon: "material-symbols:keyboard-arrow-left"
     })), /*#__PURE__*/_react["default"].createElement("button", {
       disabled: !(nextPage <= totalPages),
       title: "Go to next page",
@@ -275,7 +278,7 @@ var DataTable = function DataTable(_ref) {
         return setPageNumber(nextPage);
       }
     }, /*#__PURE__*/_react["default"].createElement(_react2.Icon, {
-      icon: 'material-symbols:keyboard-arrow-right'
+      icon: "material-symbols:keyboard-arrow-right"
     })), /*#__PURE__*/_react["default"].createElement("button", {
       disabled: totalPages <= 1 || pageNumber === totalPages,
       title: "Go to last page",
@@ -284,7 +287,7 @@ var DataTable = function DataTable(_ref) {
         return setPageNumber(lastPage);
       }
     }, /*#__PURE__*/_react["default"].createElement(_react2.Icon, {
-      icon: 'material-symbols:last-page-rounded'
+      icon: "material-symbols:last-page-rounded"
     })));
   };
   var CheckboxSelectedCount = function CheckboxSelectedCount() {
@@ -325,23 +328,23 @@ var DataTable = function DataTable(_ref) {
     if (columns.length > 0 && data.length > 0) {
       var header = columns.map(function (column) {
         return column.header;
-      }).join(',') + "\n";
+      }).join(",") + "\n";
       var rows = data.map(function (item) {
         var rowData = columns.map(function (col) {
           var _value$props;
-          var value = typeof col.selector === 'string' ? col.selector.split('.').reduce(function (acc, key) {
+          var value = typeof col.selector === "string" ? col.selector.split(".").reduce(function (acc, key) {
             return acc[key];
           }, item) : col.selector(item);
-          if (_typeof(value) === 'object' && value !== null && value !== void 0 && (_value$props = value.props) !== null && _value$props !== void 0 && _value$props.children) {
+          if (_typeof(value) === "object" && value !== null && value !== void 0 && (_value$props = value.props) !== null && _value$props !== void 0 && _value$props.children) {
             var children = Array.isArray(value.props.children) ? value.props.children : [value.props.children];
             return children.map(function (child) {
-              return _typeof(child) === 'object' ? '' : child;
-            }).join(' ').replace(/\s{2,}/g, ' ').replace(/,/g, ';');
+              return _typeof(child) === "object" ? "" : child;
+            }).join(" ").replace(/\s{2,}/g, " ").replace(/,/g, ";");
           }
-          return value.toString().replace(/,/g, ';');
+          return value.toString().replace(/,/g, ";");
         });
-        return rowData.join(',');
-      }).join('\n');
+        return rowData.join(",");
+      }).join("\n");
       var csv_data = header + rows;
       var blob = new Blob([csv_data], {
         type: "text/csv;charset=utf-8"
@@ -359,7 +362,7 @@ var DataTable = function DataTable(_ref) {
     popupContent: popupContent,
     setShowPopup: setShowPopup
   }), /*#__PURE__*/_react["default"].createElement("div", {
-    className: 'grid md:grid-cols-2 mt-3'
+    className: "grid md:grid-cols-2 mt-3"
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "title",
     title: title,
@@ -367,36 +370,36 @@ var DataTable = function DataTable(_ref) {
   }, /*#__PURE__*/_react["default"].createElement("h3", {
     className: "text-2xl font-semibold mt-2"
   }, title)), /*#__PURE__*/_react["default"].createElement("div", {
-    className: 'w-full flex justify-end grid grid-cols-1 gap-1 md:grid-cols-2'
+    className: "w-full flex justify-end grid grid-cols-1 gap-1 md:grid-cols-2"
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: 'flex justify-end gap-2'
+    className: "flex justify-end gap-2"
   }, exportable && /*#__PURE__*/_react["default"].createElement("button", {
-    title: 'Export csv',
+    title: "Export csv",
     disabled: progressPending,
     onClick: handleExport,
-    className: 'flex border-2 border-solid rounded p-2 pl-3 w-fit cursor-pointer border-gray-200 transition-all delay-100 hover:border-gray-500 disabled:opacity-50'
-  }, "Export ", /*#__PURE__*/_react["default"].createElement(_react2.Icon, {
-    className: 'mt-[2px] ml-2',
-    fontSize: '20px',
-    icon: 'prime:file-export'
+    className: "flex border-2 border-solid rounded p-2 pl-3 w-fit cursor-pointer border-gray-200 transition-all delay-100 hover:border-gray-500 disabled:opacity-50"
+  }, "Export", " ", /*#__PURE__*/_react["default"].createElement(_react2.Icon, {
+    className: "mt-[2px] ml-2",
+    fontSize: "20px",
+    icon: "prime:file-export"
   })), columnsVisibility && /*#__PURE__*/_react["default"].createElement("div", {
-    className: 'relative',
+    className: "relative",
     ref: componentRef
   }, /*#__PURE__*/_react["default"].createElement("button", {
     disabled: progressPending,
     onClick: handleHideColumnsVisibility,
-    title: 'Set column visibility',
-    className: 'flex border-2 border-solid rounded p-2 pl-3 w-fit cursor-pointer border-gray-200 transition-all delay-100 hover:border-gray-500 disabled:opacity-50'
-  }, "Columns ", /*#__PURE__*/_react["default"].createElement(_react2.Icon, {
-    className: 'mt-1 ml-2',
-    fontSize: '20px',
-    icon: 'material-symbols:keyboard-arrow-down'
+    title: "Set column visibility",
+    className: "flex border-2 border-solid rounded p-2 pl-3 w-fit cursor-pointer border-gray-200 transition-all delay-100 hover:border-gray-500 disabled:opacity-50"
+  }, "Columns", " ", /*#__PURE__*/_react["default"].createElement(_react2.Icon, {
+    className: "mt-1 ml-2",
+    fontSize: "20px",
+    icon: "material-symbols:keyboard-arrow-down"
   })), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "w-[200px] md:w-[400px] bg-gray-100 p-2 absolute top-12 left-0 z-50 rounded grid md:grid-cols-2 ".concat(isHideColumnsVisible ? 'block' : 'hidden')
+    className: "w-[200px] md:w-[400px] bg-gray-100 p-2 absolute top-12 left-0 z-50 rounded grid md:grid-cols-2 ".concat(isHideColumnsVisible ? "block" : "hidden")
   }, columns.map(function (column, index) {
     return /*#__PURE__*/_react["default"].createElement("div", {
       key: index,
-      className: 'text-xs font-medium uppercase mt-1 mb-1'
+      className: "text-xs font-medium uppercase mt-1 mb-1"
     }, /*#__PURE__*/_react["default"].createElement("input", {
       key: index,
       onChange: function onChange(e) {
@@ -404,16 +407,16 @@ var DataTable = function DataTable(_ref) {
       },
       checked: visibleColumns[index],
       id: column.header,
-      type: 'checkbox'
+      type: "checkbox"
     }), /*#__PURE__*/_react["default"].createElement("label", {
-      className: 'cursor-pointer ml-1',
+      className: "cursor-pointer ml-1",
       htmlFor: column.header
     }, column.header));
   })))), /*#__PURE__*/_react["default"].createElement("div", {
-    className: 'relative w-full'
+    className: "relative w-full"
   }, /*#__PURE__*/_react["default"].createElement(_react2.Icon, {
-    icon: 'material-symbols:search',
-    className: 'absolute top-2 left-2 text-[25px] text-gray-400'
+    icon: "material-symbols:search",
+    className: "absolute top-2 left-2 text-[25px] text-gray-400"
   }), /*#__PURE__*/_react["default"].createElement("input", {
     type: "text",
     value: inputValue,
@@ -435,9 +438,9 @@ var DataTable = function DataTable(_ref) {
   }, "No Data Found")) : /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
     className: "relative overflow-hidden"
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "w-full overflow-x-auto scroll-sm ".concat(overflowXScrollOnTop ? 'datatable-scroll-top' : '')
+    className: "w-full overflow-x-auto scroll-sm ".concat(overflowXScrollOnTop ? "datatable-scroll-top" : "")
   }, /*#__PURE__*/_react["default"].createElement("table", {
-    className: "w-full mt-4 ".concat(overflowXScrollOnTop ? 'table-scroll-top' : '')
+    className: "w-full mt-4 ".concat(overflowXScrollOnTop ? "table-scroll-top" : "")
   }, /*#__PURE__*/_react["default"].createElement("thead", null, /*#__PURE__*/_react["default"].createElement(_TableHeader["default"], {
     columns: columns,
     checkbox: checkbox,
