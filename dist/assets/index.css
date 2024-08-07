@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.scroll-sm::-webkit-scrollbar {
+    width: 5px;
+    height: 5px !important;
+}
+
+.datatable-scroll-top {
+    margin-top: 10px;
+    transform: rotateX(180deg)
+}
+
+.table-scroll-top {
+    transform: rotateX(180deg)
+}
+
+.expandable-row {
+    transition: max-height 1s ease;
+    overflow: hidden;
+}
+
+.expandable-row.collapsed {
+    height: 0;
+    display: none;
+}
+
+.expandable-row.expanded {
+    max-height: 500px; /* Adjust this value according to your content */
+}
+
+input[type="checkbox"]
+{
+    vertical-align:middle;
+    margin-top: -3px !important;
+    cursor: pointer;
+}
