@@ -345,7 +345,7 @@ var DataTable = function DataTable(_ref) {
                 return _typeof(child) === "object" ? "" : child;
               }).join(" ").replace(/\s{2,}/g, " ").replace(/,/g, ";");
             }
-            return value.toString().replace(/,/g, ";");
+            return value ? value.toString().replace(/,/g, ";") : "-";
           }
         });
         return rowData.join(",");

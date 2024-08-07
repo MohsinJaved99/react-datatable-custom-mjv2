@@ -309,7 +309,7 @@ const DataTable = ({
                                     .replace(/,/g, ";");
                             }
 
-                            return value.toString().replace(/,/g, ";");
+                            return value ? value.toString().replace(/,/g, ";") : "-";
                         }
                     });
 

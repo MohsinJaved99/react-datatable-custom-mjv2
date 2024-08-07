@@ -31,7 +31,7 @@ var Popup = function Popup(_ref) {
   }, /*#__PURE__*/_react["default"].createElement("h2", {
     className: "text-lg uppercase font-bold mb-4"
   }, popupTitle), /*#__PURE__*/_react["default"].createElement("p", {
-    className: "mb-4"
+    className: "mb-4 max-h-[500px] overflow-auto"
   }, popupContent))));
 };
 var _default = exports["default"] = /*#__PURE__*/(0, _react.memo)(Popup);
