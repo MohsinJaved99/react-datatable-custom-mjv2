@@ -139,11 +139,9 @@ var DataTable = function DataTable(_ref) {
     if (columnsVisibility) {
       if (localData) {
         if (localData.length !== visibleColumns.length) {
-          var visibleColumnsData = columns.map(function () {
+          localStorage.setItem(key, columns.map(function () {
             return true;
-          });
-          localStorage.setItem(key, visibleColumnsData);
-          setVisibleColumns(visibleColumnsData);
+          }));
         }
       } else {
         localStorage.setItem(key, visibleColumns);
@@ -327,22 +325,28 @@ var DataTable = function DataTable(_ref) {
   };
   var handleExport = function handleExport() {
     if (columns.length > 0 && data.length > 0) {
-      var header = columns.map(function (column) {
+      var header = columns.filter(function (column) {
+        return column["export"] === undefined || column["export"] === true;
+      }).map(function (column) {
         return column.header;
       }).join(",") + "\n";
       var rows = data.map(function (item) {
-        var rowData = columns.map(function (col) {
-          var _value$props;
-          var value = typeof col.selector === "string" ? col.selector.split(".").reduce(function (acc, key) {
-            return acc[key];
-          }, item) : col.selector(item);
-          if (_typeof(value) === "object" && value !== null && value !== void 0 && (_value$props = value.props) !== null && _value$props !== void 0 && _value$props.children) {
-            var children = Array.isArray(value.props.children) ? value.props.children : [value.props.children];
-            return children.map(function (child) {
-              return _typeof(child) === "object" ? "" : child;
-            }).join(" ").replace(/\s{2,}/g, " ").replace(/,/g, ";");
+        var rowData = columns.filter(function (column) {
+          return column["export"] === undefined || column["export"] === true;
+        }).map(function (col) {
+          if (col["export"] === undefined || col["export"] === true) {
+            var _value$props;
+            var value = typeof col.selector === "string" ? col.selector.split(".").reduce(function (acc, key) {
+              return acc[key];
+            }, item) : col.selector(item);
+            if (_typeof(value) === "object" && value !== null && value !== void 0 && (_value$props = value.props) !== null && _value$props !== void 0 && _value$props.children) {
+              var children = Array.isArray(value.props.children) ? value.props.children : [value.props.children];
+              return children.map(function (child) {
+                return _typeof(child) === "object" ? "" : child;
+              }).join(" ").replace(/\s{2,}/g, " ").replace(/,/g, ";");
+            }
+            return value.toString().replace(/,/g, ";");
           }
-          return value.toString().replace(/,/g, ";");
         });
         return rowData.join(",");
       }).join("\n");
