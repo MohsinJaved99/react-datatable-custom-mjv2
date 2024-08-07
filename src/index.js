@@ -63,12 +63,12 @@ const DataTable = ({
     : null;
   const [isHideColumnsVisible, setIsHideColumnsVisible] = useState(false);
   const [visibleColumns, setVisibleColumns] = useState(
-    columnsVisibility && columns.length > 0
-      ? localData && localData.length === columns.length
-        ? localData
-        : columns.map(() => true)
-      : columns.map(() => true)
-  );
+        columnsVisibility && columns.length > 0
+            ? ((localData && localData.length === columns.length)
+            ? localData
+            : columns.map(() => true))
+            : columns.map(() => true)
+    );
 
   // Debounced version of the setSearch function
   const debouncedSetSearch = useCallback(

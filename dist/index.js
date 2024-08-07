@@ -114,7 +114,7 @@ var DataTable = function DataTable(_ref) {
     _useState14 = _slicedToArray(_useState13, 2),
     isHideColumnsVisible = _useState14[0],
     setIsHideColumnsVisible = _useState14[1];
-  var _useState15 = (0, _react.useState)(columnsVisibility ? localData ? localData : columns.map(function () {
+  var _useState15 = (0, _react.useState)(columnsVisibility && columns.length > 0 ? localData && localData.length === columns.length ? localData : columns.map(function () {
       return true;
     }) : columns.map(function () {
       return true;
