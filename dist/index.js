@@ -139,10 +139,11 @@ var DataTable = function DataTable(_ref) {
     if (columnsVisibility) {
       if (localData) {
         if (localData.length !== visibleColumns.length) {
-          localStorage.setItem(key, visibleColumns);
-          setVisibleColumns(columns.map(function () {
+          var visibleColumnsData = columns.map(function () {
             return true;
-          }));
+          });
+          localStorage.setItem(key, visibleColumnsData);
+          setVisibleColumns(visibleColumnsData);
         }
       } else {
         localStorage.setItem(key, visibleColumns);

@@ -63,8 +63,8 @@ const DataTable = ({
     : null;
   const [isHideColumnsVisible, setIsHideColumnsVisible] = useState(false);
   const [visibleColumns, setVisibleColumns] = useState(
-    columnsVisibility
-      ? localData
+    columnsVisibility && columns.length > 0
+      ? localData && localData.length === columns.length
         ? localData
         : columns.map(() => true)
       : columns.map(() => true)
