@@ -63,12 +63,12 @@ const DataTable = ({
     : null;
   const [isHideColumnsVisible, setIsHideColumnsVisible] = useState(false);
   const [visibleColumns, setVisibleColumns] = useState(
-        columnsVisibility && columns.length > 0
-            ? ((localData && localData.length === columns.length)
-            ? localData
-            : columns.map(() => true))
-            : columns.map(() => true)
-    );
+    columnsVisibility && columns.length > 0
+      ? localData && localData.length === columns.length
+        ? localData
+        : columns.map(() => true)
+      : columns.map(() => true)
+  );
 
   // Debounced version of the setSearch function
   const debouncedSetSearch = useCallback(
@@ -289,29 +289,43 @@ const DataTable = ({
 
   const handleExport = () => {
     if (columns.length > 0 && data.length > 0) {
-      const header = columns.map((column) => column.header).join(",") + "\n";
+      const header =
+        columns
+          .filter(
+            (column) => column.export === undefined || column.export === true
+          )
+          .map((column) => column.header)
+          .join(",") + "\n";
 
       const rows = data
         .map((item) => {
-          const rowData = columns.map((col) => {
-            const value =
-              typeof col.selector === "string"
-                ? col.selector.split(".").reduce((acc, key) => acc[key], item)
-                : col.selector(item);
+          const rowData = columns
+            .filter(
+              (column) => column.export === undefined || column.export === true
+            )
+            .map((col) => {
+              if (col.export === undefined || col.export === true) {
+                const value =
+                  typeof col.selector === "string"
+                    ? col.selector
+                        .split(".")
+                        .reduce((acc, key) => acc[key], item)
+                    : col.selector(item);
 
-            if (typeof value === "object" && value?.props?.children) {
-              const children = Array.isArray(value.props.children)
-                ? value.props.children
-                : [value.props.children];
-              return children
-                .map((child) => (typeof child === "object" ? "" : child))
-                .join(" ")
-                .replace(/\s{2,}/g, " ")
-                .replace(/,/g, ";");
-            }
+                if (typeof value === "object" && value?.props?.children) {
+                  const children = Array.isArray(value.props.children)
+                    ? value.props.children
+                    : [value.props.children];
+                  return children
+                    .map((child) => (typeof child === "object" ? "" : child))
+                    .join(" ")
+                    .replace(/\s{2,}/g, " ")
+                    .replace(/,/g, ";");
+                }
 
-            return value.toString().replace(/,/g, ";");
-          });
+                return value.toString().replace(/,/g, ";");
+              }
+            });
 
           return rowData.join(",");
         })
