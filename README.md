@@ -97,11 +97,7 @@ const AwaitingShipment = () => {
                     status: 'awaiting_shipment',
                     search: search,
                     order_by: orderBy,
-                    sort_by: sortBy,
-                    store_id: selectedStore,
-                    carrier_name: selectedCarrier,
-                    created: selectedOrderCreated,
-                    last_updated_at: lastUpdatedAt
+                    sort_by: sortBy
                 },
                 headers
             });
@@ -244,7 +240,8 @@ const AwaitingShipment = () => {
             </>),
             style: {
                 minWidth: '200px'
-            }
+            },
+            export: false
         },
         {
             header: 'Weight',

@@ -166,7 +166,10 @@ const DataTable = ({
                     <select
                         className={"ml-1"}
                         defaultValue={defaultPageSize}
-                        onChange={(e) => setPageSize(Number(e.target.value))}
+                        onChange={(e) => {
+                            setPageNumber(1);
+                            setPageSize(Number(e.target.value));
+                        }}
                     >
                         {pageSizeOptions.map((pagination, index) => (
                             <option key={index} value={pagination}>

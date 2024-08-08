@@ -221,7 +221,8 @@ var DataTable = function DataTable(_ref) {
       className: "ml-1",
       defaultValue: defaultPageSize,
       onChange: function onChange(e) {
-        return setPageSize(Number(e.target.value));
+        setPageNumber(1);
+        setPageSize(Number(e.target.value));
       }
     }, pageSizeOptions.map(function (pagination, index) {
       return /*#__PURE__*/_react["default"].createElement("option", {

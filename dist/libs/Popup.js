@@ -27,7 +27,7 @@ var Popup = function Popup(_ref) {
     fontSize: "30px",
     icon: 'mdi:close-thick'
   })), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "bg-white p-6 rounded-lg shadow-lg max-w-sm mx-auto w-full"
+    className: "bg-white p-6 rounded-lg shadow-lg max-w-xl mx-auto w-full"
   }, /*#__PURE__*/_react["default"].createElement("h2", {
     className: "text-lg uppercase font-bold mb-4"
   }, popupTitle), /*#__PURE__*/_react["default"].createElement("p", {
