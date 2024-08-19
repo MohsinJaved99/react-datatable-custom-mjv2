@@ -351,7 +351,7 @@ const DataTable = ({
                                     disabled={progressPending}
                                     onClick={handleExport}
                                     className={
-                                        "flex border-2 border-solid rounded p-2 pl-3 w-fit cursor-pointer border-gray-200 transition-all delay-100 hover:border-gray-500 disabled:opacity-50"
+                                        "mj_exportBtn flex border-2 border-solid rounded p-2 pl-3 w-fit cursor-pointer border-gray-200 transition-all delay-100 hover:border-gray-500 disabled:opacity-50"
                                     }
                                 >
                                     Export{" "}
@@ -370,7 +370,7 @@ const DataTable = ({
                                         onClick={handleHideColumnsVisibility}
                                         title={"Set column visibility"}
                                         className={
-                                            "flex border-2 border-solid rounded p-2 pl-3 w-fit cursor-pointer border-gray-200 transition-all delay-100 hover:border-gray-500 disabled:opacity-50"
+                                            "mj_columnVisibilityBtn flex border-2 border-solid rounded p-2 pl-3 w-fit cursor-pointer border-gray-200 transition-all delay-100 hover:border-gray-500 disabled:opacity-50"
                                         }
                                     >
                                         Columns{" "}
@@ -381,7 +381,7 @@ const DataTable = ({
                                         />
                                     </button>
                                     <div
-                                        className={`w-[200px] md:w-[400px] bg-gray-100 p-2 absolute top-12 left-0 z-50 rounded grid md:grid-cols-2 ${
+                                        className={`w-[200px] md:w-[400px] mx-h-[300px] overflow-auto bg-gray-100 p-2 absolute top-12 left-0 z-50 rounded grid md:grid-cols-2 ${
                                             isHideColumnsVisible ? "block" : "hidden"
                                         }`}
                                     >
@@ -423,7 +423,7 @@ const DataTable = ({
                                 onChange={(e) => setInputValue(e.target.value)}
                                 title={searchPlaceholder}
                                 className={
-                                    "border-2 border-solid rounded pl-10 pt-2 pb-2 pr-2 w-full border-gray-200 transition-all delay-100 hover:border-gray-500"
+                                    "mj_searchInput border-2 border-solid rounded pl-10 pt-2 pb-2 pr-2 w-full border-gray-200 transition-all delay-100 hover:border-gray-500"
                                 }
                                 placeholder={searchPlaceholder}
                             />

@@ -42,7 +42,7 @@ const TableRow = ({
 
     return (
         <>
-            <tr key={index} className={`relative ${highlightRowOnHover ? 'hover:bg-gray-100' : ''}`}>
+            <tr key={index} className={`relative mj_tableRow ${highlightRowOnHover ? 'hover:bg-gray-100' : ''}`}>
                 {expandable && (expandableCondition === undefined || expandableCondition(item) ? <td className={rowClassName}>
                     <span
                         title={"Click to expand"}
